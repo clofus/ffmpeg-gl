@@ -17,7 +17,7 @@ RUN \
 # GLSL transitions between concatenated videos
 # https://github.com/transitive-bullshit/ffmpeg-gl-transition
 RUN \
-       git clone https://github.com/transitive-bullshit/ffmpeg-gl-transition.git /tmp/ffmpeg-gl-transition
+       git clone https://github.com/transitive-bullshit/ffmpeg-gl-transition.git ${WORKDIR}/ffmpeg-gl-transition
 
 # Install packages needed for gltransitions
 RUN \
@@ -25,12 +25,12 @@ RUN \
 
 ## ffmpeg https://ffmpeg.org/
 RUN  \
-        DIR=$(mktemp -d) && cd ${DIR} && \
-        curl -sLO https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.bz2 && \
+        git clone http://source.ffmpeg.org/git/ffmpeg.git ffmpeg
+        cd ${WORKDIR}/ffmpeg && \
         tar -jx --strip-components=1 -f ffmpeg-${FFMPEG_VERSION}.tar.bz2 && \
-        ln -s /tmp/ffmpeg-gl-transition/vf_gltransition.c libavfilter/ && \
+        ln -s ${WORKDIR}/ffmpeg-gl-transition/vf_gltransition.c libavfilter/ && \
         ls libavfilter && \
-        git apply /tmp/ffmpeg-gl-transition/ffmpeg.diff && \
+        git apply ${WORKDIR}/ffmpeg-gl-transition/ffmpeg.diff && \
         ./configure \
         --disable-debug \
         --disable-doc \

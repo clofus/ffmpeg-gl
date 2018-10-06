@@ -11,6 +11,9 @@ ARG     LD_LIBRARY_PATH=/opt/ffmpeg/lib
 ARG     PREFIX=/opt/ffmpeg
 ARG     MAKEFLAGS="-j2"
 
+RUN \
+       DEBIAN_FRONTEND=noninteractive apt-get install -yq keyboard-configuration
+
 # GLSL transitions between concatenated videos
 # https://github.com/transitive-bullshit/ffmpeg-gl-transition
 # RUN \
@@ -85,9 +88,9 @@ MAINTAINER  Mark Lorenz <markjlorenz@gmail.com>
 RUN \
        curl -sL http://xpra.org/xorg.conf > /etc/X11/xorg.conf
 
-# Install packages needed for gltransitions xserver-xorg-video-dummy
+# Install packages needed for gltransitions 
 RUN \
-       apt-get install -yq libglfw3 libglfw3-dev libglew1.13 libglew-dev glew-utils libxcb1 libxcb1-dev libxcb-shm0-dev libxcb-shm0 libxcb-xfixes0-dev libxcb-xfixes0 libgl1-mesa-glx mesa-utils x11-apps
+       apt-get install -yq libglfw3 libglfw3-dev libglew1.13 libglew-dev glew-utils libxcb1 libxcb1-dev libxcb-shm0-dev libxcb-shm0 libxcb-xfixes0-dev libxcb-xfixes0 libgl1-mesa-glx xserver-xorg-video-dummy mesa-utils x11-apps
 
 COPY        ./init.sh /etc/init.sh
 COPY        ./filters/crosswarp.glsl /filters/crosswarp.glsl

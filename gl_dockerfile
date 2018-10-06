@@ -27,7 +27,6 @@ RUN \
 RUN  \
         git clone http://source.ffmpeg.org/git/ffmpeg.git ${WORKDIR}/ffmpeg && \
         cd ${WORKDIR}/ffmpeg && \
-        tar -jx --strip-components=1 -f ffmpeg-${FFMPEG_VERSION}.tar.bz2 && \
         ln -s ${WORKDIR}/ffmpeg-gl-transition/vf_gltransition.c libavfilter/ && \
         ls libavfilter && \
         git apply ${WORKDIR}/ffmpeg-gl-transition/ffmpeg.diff && \

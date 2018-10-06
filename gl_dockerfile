@@ -21,7 +21,7 @@ RUN \
 
 # Install packages needed for gltransitions
 RUN \
-       apt-get install -yq libglfw3 libglfw3-dev libglew1.13 libglew-dev glew-utils libxcb1 libxcb1-dev libxcb-shm0-dev libxcb-shm0 libxcb-xfixes0-dev libxcb-xfixes0 libgl1-mesa-glx xserver-xorg-video-dummy mesa-utils x11-apps
+       apt-get install -yq libass-dev libglfw3 libglfw3-dev libglew1.13 libglew-dev glew-utils libxcb1 libxcb1-dev libxcb-shm0-dev libxcb-shm0 libxcb-xfixes0-dev libxcb-xfixes0 libgl1-mesa-glx xserver-xorg-video-dummy mesa-utils x11-apps
 
 ## ffmpeg https://ffmpeg.org/
 RUN  \

@@ -17,7 +17,7 @@ RUN \
 # GLSL transitions between concatenated videos
 # https://github.com/transitive-bullshit/ffmpeg-gl-transition
 # RUN \
-#         git clone https://github.com/transitive-bullshit/ffmpeg-gl-transition.git /tmp/ffmpeg-gl-transition
+       git clone https://github.com/transitive-bullshit/ffmpeg-gl-transition.git /tmp/ffmpeg-gl-transition
 
 # Install packages needed for gltransitions
 RUN \

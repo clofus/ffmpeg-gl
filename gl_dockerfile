@@ -4,8 +4,6 @@ FROM    soodesune/ffmpeg:base AS base
 
 WORKDIR /tmp/workdir
 
-FROM    base as build
-
 ARG     PKG_CONFIG_PATH=/opt/ffmpeg/lib/pkgconfig
 ARG     LD_LIBRARY_PATH=/opt/ffmpeg/lib
 ARG     PREFIX=/opt/ffmpeg
@@ -91,8 +89,8 @@ RUN \
         LD_LIBRARY_PATH=/usr/local/lib ffmpeg -buildconf && \
         ldconfig
 
-FROM        base AS release
-MAINTAINER  Mark Lorenz <markjlorenz@gmail.com>
+#FROM        base AS release
+#MAINTAINER  Mark Lorenz <markjlorenz@gmail.com>
 
 # Get the dummyX11 config
 RUN \
@@ -106,4 +104,4 @@ ENV         LD_LIBRARY_PATH=/usr/local/lib \
             FONTCONFIG_PATH=/etc/fonts \
             DISPLAY=:1
 
-COPY --from=build /usr/local /usr/local/
+#COPY --from=build /usr/local /usr/local/

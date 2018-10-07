@@ -11,13 +11,17 @@ ARG     LD_LIBRARY_PATH=/opt/ffmpeg/lib
 ARG     PREFIX=/opt/ffmpeg
 ARG     MAKEFLAGS="-j2"
 
+
+
 RUN \
        DEBIAN_FRONTEND=noninteractive apt-get install -yq keyboard-configuration
 
 # GLSL transitions between concatenated videos
 # https://github.com/transitive-bullshit/ffmpeg-gl-transition
-RUN \
-       git clone https://github.com/transitive-bullshit/ffmpeg-gl-transition.git ${WORKDIR}/ffmpeg-gl-transition
+# RUN \
+#       git clone https://github.com/transitive-bullshit/ffmpeg-gl-transition.git ${WORKDIR}/ffmpeg-gl-transition
+
+COPY    ./ffmpeg-gl-transition ${WORKDIR}/ffmpeg-gl-transition
 
 # Install packages needed for gltransitions
 RUN \
@@ -56,7 +60,6 @@ RUN  \
         --enable-opengl \
         --enable-openssl \
         --enable-libfdk_aac \
-        --enable-libkvazaar \
         --enable-postproc \
         --enable-small \
         --enable-version3 \

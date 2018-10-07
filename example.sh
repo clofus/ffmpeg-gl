@@ -18,7 +18,6 @@ docker run --rm \
       [v211t]setpts=PTS-STARTPTS[v211]; \
       [v011][v101]gltransition=duration=1:source=/filters/crosswarp.glsl[vt0]; \
       [v111][v201]gltransition=duration=1[vt1]; \
-      [v001][vt0][vt1][v211]concat=n=4[outv]" \
-    -map "[outv]" \
+      [v001][vt0][vt1][v211]concat=n=4" \
     -pix_fmt yuv420p \
     -y -f mpegts out.mp4

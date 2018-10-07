@@ -11,7 +11,15 @@ ARG     LD_LIBRARY_PATH=/opt/ffmpeg/lib
 ARG     PREFIX=/opt/ffmpeg
 ARG     MAKEFLAGS="-j2"
 
+COPY    ./ffmpeg-gl-transition ${WORKDIR}/ffmpeg-gl-transition
 
+COPY    ./selections.conf ${WORKDIR}/selections.conf
+
+RUN \
+       DEBIAN_FRONTEND=noninteractive apt-get install -yq debconf-utils
+
+RUN \
+       debconf-set-selections < ${WORKDIR}/selections.conf
 
 RUN \
        DEBIAN_FRONTEND=noninteractive apt-get install -yq keyboard-configuration
@@ -21,11 +29,11 @@ RUN \
 # RUN \
 #       git clone https://github.com/transitive-bullshit/ffmpeg-gl-transition.git ${WORKDIR}/ffmpeg-gl-transition
 
-COPY    ./ffmpeg-gl-transition ${WORKDIR}/ffmpeg-gl-transition
+
 
 # Install packages needed for gltransitions
 RUN \
-       apt-get install -yq libass-dev libx265-dev libxvidcore-dev libnuma-dev libvpx-dev apt-get install libx264-dev libopus-dev libglfw3 libglfw3-dev libglew1.13 libglew-dev glew-utils libxcb1 libxcb1-dev libxcb-shm0-dev libxcb-shm0 libxcb-xfixes0-dev libxcb-xfixes0 libgl1-mesa-glx xserver-xorg-video-dummy mesa-utils x11-apps
+       apt-get install -yq libass-dev libx265-dev libxvidcore-dev libnuma-dev libvpx-dev libx264-dev libopus-dev libglfw3 libglfw3-dev libglew1.13 libglew-dev glew-utils libxcb1 libxcb1-dev libxcb-shm0-dev libxcb-shm0 libxcb-xfixes0-dev libxcb-xfixes0 libgl1-mesa-glx xserver-xorg-video-dummy mesa-utils x11-apps
 
 ## ffmpeg https://ffmpeg.org/
 RUN  \

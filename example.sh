@@ -1,7 +1,7 @@
 docker run --rm \
   --volume "$PWD":/video \
   --workdir /video \
-  soodesune/ffmpeg:gl \
+  clofus/ffmpeg:gl \
     -i ffmpeg-gl-transition/media/0.mp4 -i ffmpeg-gl-transition/media/1.mp4 -i ffmpeg-gl-transition/media/2.mp4 \
     -filter_complex " \
       [0:v]split[v000][v010]; \

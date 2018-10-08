@@ -97,7 +97,7 @@ RUN \
        curl -sL http://xpra.org/xorg.conf > /etc/X11/xorg.conf
 
 COPY        ./init.sh /etc/init.sh
-COPY        ./filters/crosswarp.glsl /filters/crosswarp.glsl
+COPY        ./filters /filters
 CMD         ["ffmpeg"]
 ENTRYPOINT  ["/etc/init.sh"]
 ENV         LD_LIBRARY_PATH=/usr/local/lib \

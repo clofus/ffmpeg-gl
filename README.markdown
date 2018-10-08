@@ -5,7 +5,7 @@
 ### Step: 1
 Build Docker image with ffmpeg
 
-`docker build . -f base_dockerfile -t clofus/ffmpeg:base`
+`docker build . -f base_ffmpeg_dockerfile -t clofus/ffmpeg:base`
 
 ### Step: 2
 Build Docker image with ffmpeg + gl tranistion 

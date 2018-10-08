@@ -1,6 +1,6 @@
-# docker build . -f gl_dockerfile -t soodesune/ffmpeg:gl
+# docker build . -f gl_dockerfile -t clofus/ffmpeg:gl
 
-FROM    soodesune/ffmpeg:base AS base
+FROM    clofus/ffmpeg:base AS base
 
 WORKDIR /tmp/workdir
 
@@ -21,13 +21,6 @@ RUN \
 
 RUN \
        DEBIAN_FRONTEND=noninteractive apt-get install -yq keyboard-configuration
-
-# GLSL transitions between concatenated videos
-# https://github.com/transitive-bullshit/ffmpeg-gl-transition
-# RUN \
-#       git clone https://github.com/transitive-bullshit/ffmpeg-gl-transition.git ${WORKDIR}/ffmpeg-gl-transition
-
-
 
 # Install packages needed for gltransitions
 RUN \
@@ -89,8 +82,6 @@ RUN \
         LD_LIBRARY_PATH=/usr/local/lib ffmpeg -buildconf && \
         ldconfig
 
-#FROM        base AS release
-#MAINTAINER  Mark Lorenz <markjlorenz@gmail.com>
 
 # Get the dummyX11 config
 RUN \
@@ -103,5 +94,3 @@ ENTRYPOINT  ["/etc/init.sh"]
 ENV         LD_LIBRARY_PATH=/usr/local/lib \
             FONTCONFIG_PATH=/etc/fonts \
             DISPLAY=:1
-
-#COPY --from=build /usr/local /usr/local/

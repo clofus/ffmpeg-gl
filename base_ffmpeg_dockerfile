@@ -1,4 +1,4 @@
-# docker build . -f base_dockerfile -t clofus/ffmpeg:base
+# docker build . -f base_ffmpeg_dockerfile -t clofus/ffmpeg:base
 # ffmpeg - http://ffmpeg.org/download.html
 #
 # From https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
